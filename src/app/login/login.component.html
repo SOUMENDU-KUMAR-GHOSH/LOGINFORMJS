@@ -1,0 +1,35 @@
+<form [formGroup]="loginform" (ngSubmit)="login()">
+  <div class="container">
+  <div>
+    <label for="uname"><b>USERNAME</b></label>
+    <input type="text" placeholder="ENTER USERNAME" formControlName="uname">
+    <div *ngIf="loginform.controls?.uname?.invalid">
+            
+      <span *ngIf="loginform.controls?.uname?.errors?.pattern">
+        <p class="validation">*Please enter valid Email.</p>
+      </span>
+    </div>
+    </div>
+    <div>
+      <label for="psw"><b>PASSWORD</b></label>
+      <input type="text" placeholder="ENTER PASSWORD" formControlName="psw">
+      <div *ngIf="loginform.controls?.psw?.invalid">
+                        
+        <span *ngIf="loginform.controls?.psw?.errors?.minlength">
+          <p class="validation">*Minimum 5 character.</p>
+        </span>
+        <span class="hass-error-message" *ngIf="loginform.controls?.psw?.errors?.maxlength">
+          <p class="validation">*Maximum 10 character.</p>
+        </span>
+        
+      </div>
+    </div>
+
+    <button type="submit">LOGIN</button>
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
